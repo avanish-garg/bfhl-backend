@@ -7,6 +7,13 @@ import mimetypes
 import math
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],            # for dev: allow all; later you can restrict to your Vercel URL
+    allow_credentials=True,
+    allow_methods=["*"],            # GET, POST, OPTIONS, etc
+    allow_headers=["*"],            # Accept all headers
+)
 
 class InputModel(BaseModel):
     data: List[str]
